@@ -1,0 +1,38 @@
+
+<header id="mainHeader">
+  <a href="#" class="header-logo">
+    <div class="logo-squares">
+      <div class="logo-sq"></div>
+      <div class="logo-sq"></div>
+      <div class="logo-sq"></div>
+      <div class="logo-sq"></div>
+    </div>
+    <span class="logo-text">AI Developer Day</span>
+  </a>
+  <nav>
+    <a href="#speakers">Speakers</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#register" class="nav-cta">Regístrate</a>
+  </nav>
+</header>
+
+<style lang="scss">
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 52px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background .55s ease, box-shadow .55s;
+
+    &.scrolled {
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 2px 24px rgba(66,133,244,.07);
+    }
+  }
+
+</style>
