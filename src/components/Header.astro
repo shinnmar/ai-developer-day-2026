@@ -1,4 +1,5 @@
-
+---
+---
 <header id="mainHeader">
   <a href="#" class="header-logo">
     <div class="logo-squares">
@@ -12,6 +13,7 @@
   <nav>
     <a href="#speakers">Speakers</a>
     <a href="#agenda">Agenda</a>
+    <a href="#sponsors">Sponsors</a>
     <a href="#register" class="nav-cta">Regístrate</a>
   </nav>
 </header>
@@ -26,13 +28,100 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: background .55s ease, box-shadow .55s;
-
+    transition: background .4s ease,
+                box-shadow .4s ease,
+                border-bottom .4s ease;
     &.scrolled {
-      background: rgba(255,255,255,.96);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(14px);
-      box-shadow: 0 2px 24px rgba(66,133,244,.07);
+      border-bottom: 1px solid rgba(66, 133, 244, 0.1);
+      box-shadow: 0 2px 24px rgba(66, 133, 244, 0.07);
     }
   }
 
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-squares {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .logo-sq {
+    border-radius: 2px;
+    &:nth-child(1) { background: #4285f4; }
+    &:nth-child(2) { background: #8ab4f8; }
+    &:nth-child(3) { background: #c5d9fd; }
+    &:nth-child(4) { background: #1a73e8; }
+  }
+
+  .logo-text {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 15px;
+    color: #0d1117;
+  }
+
+  nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+
+    a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(13, 17, 23, 0.45);
+      transition: color .25s;
+
+      &:hover { color: var(--blue-mid); }
+    }
+  }
+
+  .nav-cta {
+    font-family: var(--sans) !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    padding: 9px 22px;
+    background: var(--blue-mid);
+    color: var(--white) !important;
+    border-radius: 40px;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    transition: background .25s, transform .2s, box-shadow .3s !important;
+
+    &:hover {
+      background: var(--blue-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(66, 133, 244, 0.35);
+    }
+  }
+
+  @media (max-width: 900px) {
+    header { padding: 0 24px; }
+    nav { display: none; }
+  }
 </style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const header = document.getElementById('mainHeader');
+
+  ScrollTrigger.create({
+    trigger: 'body',
+    start: 'top+=80 top',
+    onEnter:     () => header?.classList.add('scrolled'),
+    onLeaveBack: () => header?.classList.remove('scrolled'),
+  });
+</script>

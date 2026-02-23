@@ -1,0 +1,363 @@
+---
+---
+<section id="intro">
+  <canvas id="pixelCanvas"></canvas>
+
+  <div class="intro-inner">
+
+    <div class="badge" id="introBadge">
+      <span>Tercera edición</span>
+      <span class="badge-dot"></span>
+      <span>GDG Callao</span>
+      <span class="badge-dot"></span>
+      <span>Lima 2026</span>
+    </div>
+
+    <h1 class="intro-title">
+      <span class="line" id="line1">
+        <span class="word gradient">AI</span>
+        <span class="word gradient">Developer</span>
+        <span class="word gradient">Day</span>
+      </span>
+      <span class="line" id="line2">
+        <span class="word dark">Build</span>
+        <span class="word dark">with</span>
+        <span class="word dark">AI</span>
+        <span class="gem-icon">
+          <svg viewBox="0 0 28 28">
+            <defs>
+              <linearGradient id="gG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%"   stop-color="#74b0f8"/>
+                <stop offset="50%"  stop-color="#4285f4"/>
+                <stop offset="100%" stop-color="#1557b0"/>
+              </linearGradient>
+            </defs>
+            <path d="M14 1.5C14 1.5 15.4 9.6 18.4 11.6C21.4 13.6 26.5 14 26.5 14C26.5 14 21.4 14.4 18.4 16.4C15.4 18.4 14 26.5 14 26.5C14 26.5 12.6 18.4 9.6 16.4C6.6 14.4 1.5 14 1.5 14C1.5 14 6.6 13.6 9.6 11.6C12.6 9.6 14 1.5 14 1.5Z"
+                  fill="url(#gG)"/>
+          </svg>
+        </span>
+      </span>
+    </h1>
+
+    <p class="intro-date" id="introDate">Lima, 11 de abril 2026</p>
+
+  </div>
+
+  <div class="scroll-hint" id="scrollHint">
+    <span>scroll</span>
+    <div class="scroll-mouse"></div>
+  </div>
+</section>
+
+<style lang="scss">
+  #intro {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(
+        ellipse 70% 60% at 50% 50%,
+        rgba(66, 133, 244, 0.05) 0%,
+        transparent 70%
+      );
+    }
+  }
+
+  #pixelCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .intro-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+    max-width: 1100px;
+  }
+
+  // ── Badge ───────────────────────────────────────────────
+  .badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 40px;
+    opacity: 0;
+  }
+
+  .badge-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--blue-mid);
+    opacity: 0.4;
+  }
+
+  // ── Título ──────────────────────────────────────────────
+  .intro-title {
+    font-family: var(--sans);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .line {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+  }
+
+  .word {
+    display: inline-block;
+    font-size: clamp(52px, 9vw, 120px);
+    transform: translateY(110%);
+
+    &.gradient {
+      background: linear-gradient(
+        130deg,
+        #1a73e8 0%,
+        #4285f4 50%,
+        #74b0f8 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    &.dark {
+      color: #0d1117;
+    }
+  }
+
+  .gem-icon {
+    display: inline-flex;
+    align-items: center;
+    width: clamp(40px, 6vw, 80px);
+    height: clamp(40px, 6vw, 80px);
+    transform: translateY(110%);
+    opacity: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 12px rgba(66, 133, 244, 0.5));
+      animation: gemPulse 3s ease-in-out infinite;
+    }
+  }
+
+  @keyframes gemPulse {
+    0%, 100% { filter: drop-shadow(0 0 12px rgba(66, 133, 244, 0.5)); }
+    50%       { filter: drop-shadow(0 0 24px rgba(66, 133, 244, 0.9)); }
+  }
+
+  .intro-date {
+    margin-top: 32px;
+    font-family: var(--mono);
+    font-size: clamp(13px, 1.5vw, 16px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(13, 17, 23, 0.35);
+    opacity: 0;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+
+    span {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(13, 17, 23, 0.25);
+    }
+  }
+
+  .scroll-mouse {
+    width: 20px;
+    height: 30px;
+    border: 1.5px solid rgba(66, 133, 244, 0.3);
+    border-radius: 12px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 7px;
+      background: var(--blue-mid);
+      border-radius: 2px;
+      animation: scrollDrop 1.8s ease-in-out infinite;
+    }
+  }
+
+  @keyframes scrollDrop {
+    0%   { top: 6px;  opacity: 1; }
+    75%  { top: 16px; opacity: 0; }
+    100% { top: 6px;  opacity: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .badge { font-size: 9px; gap: 6px; }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const canvas = document.getElementById('pixelCanvas') as HTMLCanvasElement;
+  const ctx    = canvas.getContext('2d')!;
+
+  const COLS = [
+    'rgba(66,133,244,',
+    'rgba(138,180,248,',
+    'rgba(197,217,253,',
+    'rgba(26,115,232,',
+  ];
+
+  let W: number, H: number;
+
+  type Square = {
+    x: number; y: number; size: number;
+    col: string; alpha: number;
+    vx: number; vy: number;
+    rot: number; vrot: number; phase: number;
+  };
+
+  let squares: Square[] = [];
+
+  function initCanvas() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+
+    squares = Array.from({ length: 60 }, () => {
+      const size = Math.random() < 0.35 ? 6
+                 : Math.random() < 0.6  ? 10 : 16;
+      return {
+        x:     Math.random() * W,
+        y:     Math.random() * H,
+        size,
+        col:   COLS[Math.floor(Math.random() * COLS.length)],
+        alpha: 0.1 + Math.random() * 0.2,
+        vx:    (Math.random() - 0.5) * 0.22,
+        vy:    (Math.random() - 0.5) * 0.22,
+        rot:   Math.random() * Math.PI * 2,
+        vrot:  (Math.random() - 0.5) * 0.007,
+        phase: Math.random() * Math.PI * 2,
+      };
+    });
+  }
+
+  function drawCanvas(t: number) {
+    ctx.clearRect(0, 0, W, H);
+
+    squares.forEach(s => {
+      s.x   += s.vx;
+      s.y   += s.vy;
+      s.rot += s.vrot;
+
+      if (s.x < -32)    s.x = W + 20;
+      if (s.x > W + 32) s.x = -20;
+      if (s.y < -32)    s.y = H + 20;
+      if (s.y > H + 32) s.y = -20;
+
+      const a = Math.max(0.01, s.alpha + Math.sin(t * 0.0009 + s.phase) * 0.05);
+
+      ctx.save();
+      ctx.translate(s.x, s.y);
+      ctx.rotate(s.rot);
+      ctx.fillStyle = s.col + a + ')';
+      ctx.fillRect(-s.size / 2, -s.size / 2, s.size, s.size);
+      ctx.restore();
+    });
+
+    requestAnimationFrame(drawCanvas);
+  }
+
+  window.addEventListener('resize', initCanvas);
+  initCanvas();
+  requestAnimationFrame(drawCanvas);
+
+
+  const tl = gsap.timeline({ delay: 0.2 });
+
+  tl
+    .to('#introBadge', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+
+    // Palabras línea 1 — "AI Developer Day"
+    .to('#line1 .word', {
+      y: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.08,
+    }, '-=0.2')
+
+    // Palabras línea 2 — "Build with AI"
+    .to('#line2 .word', {
+      y: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.08,
+    }, '-=0.4')
+
+    .to('.gem-icon', {
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: 'back.out(1.5)',
+    }, '-=0.3')
+
+    .to('#introDate', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    }, '-=0.1')
+
+    .to('#scrollHint', {
+      opacity: 1,
+      duration: 0.5,
+    }, '+=0.2');
+</script>

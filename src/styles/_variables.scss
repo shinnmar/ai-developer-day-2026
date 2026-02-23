@@ -1,12 +1,26 @@
 :root {
-  --blue-deep:  #1a73e8;
-  --blue-mid:   #4285f4;
+  --blue-deep: #1a73e8;
+  --blue-mid: #4285f4;
   --blue-light: #8ab4f8;
-  --blue-pale:  #c5d9fd;
+  --blue-pale: #c5d9fd;
   --blue-ultra: #e8f0fe;
-  --dark:       #0d1117;
-  --white:      #ffffff;
-  --off-white:  #f8f9ff;
-  --sans:       'Nunito', sans-serif;
-  --mono:       'DM Mono', monospace;
+  --dark: #0d1117;
+  --white: #ffffff;
+  --off-white: #f8f9ff;
+  --sans: "Nunito", sans-serif;
+  --mono: "DM Mono", monospace;
+}
+
+$bp-tablet: 900px;
+$bp-mobile: 600px;
+
+@mixin tablet {
+  @media (max-width: $bp-tablet) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
 }
