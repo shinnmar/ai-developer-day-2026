@@ -2,12 +2,6 @@
 ---
 <header id="mainHeader">
   <a href="#" class="header-logo">
-    <div class="logo-squares">
-      <div class="logo-sq"></div>
-      <div class="logo-sq"></div>
-      <div class="logo-sq"></div>
-      <div class="logo-sq"></div>
-    </div>
     <span class="logo-text">AI Developer Day</span>
   </a>
   <nav>
@@ -53,14 +47,6 @@
     height: 22px;
   }
 
-  .logo-sq {
-    border-radius: 2px;
-    &:nth-child(1) { background: #4285f4; }
-    &:nth-child(2) { background: #8ab4f8; }
-    &:nth-child(3) { background: #c5d9fd; }
-    &:nth-child(4) { background: #1a73e8; }
-  }
-
   .logo-text {
     font-family: var(--sans);
     font-weight: 400;
@@ -72,12 +58,11 @@
     display: flex;
     gap: 32px;
     align-items: center;
+    font-family: var(--secondary);
 
     a {
-      font-family: var(--mono);
-      font-size: 11px;
+      font-size: 1rem;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
       color: rgba(13, 17, 23, 0.45);
       transition: color .25s;
 
@@ -86,9 +71,9 @@
   }
 
   .nav-cta {
-    font-family: var(--sans) !important;
-    font-weight: 700 !important;
-    font-size: 13px !important;
+    font-family: var(--secondary);
+    font-weight: 400 !important;
+    font-size: 15px !important;
     padding: 9px 22px;
     background: var(--blue-mid);
     color: var(--white) !important;

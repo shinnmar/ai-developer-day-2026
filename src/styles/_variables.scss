@@ -7,19 +7,6 @@
   --dark: #0d1117;
   --white: #ffffff;
   --off-white: #f8f9ff;
-  --sans: "ProductSans", sans-serif;
-}
-
-$bp-tablet: 900px;
-$bp-mobile: 600px;
-
-@mixin tablet {
-  @media (max-width: $bp-tablet) {
-    @content;
-  }
-}
-@mixin mobile {
-  @media (max-width: $bp-mobile) {
-    @content;
-  }
+  --sans: "Google Sans", sans-serif;
+  --secondary: "Roboto Mono", monospace;
 }
