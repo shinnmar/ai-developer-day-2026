@@ -1,0 +1,113 @@
+---
+---
+<div id="cursor-gem">
+  <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="gemGradient" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"   stop-color="#74b0f8"/>
+        <stop offset="50%"  stop-color="#4285f4"/>
+        <stop offset="100%" stop-color="#1557b0"/>
+      </linearGradient>
+    </defs>
+    <path d="M14 1.5
+             C14 1.5 15.4 9.6 18.4 11.6
+             C21.4 13.6 26.5 14 26.5 14
+             C26.5 14 21.4 14.4 18.4 16.4
+             C15.4 18.4 14 26.5 14 26.5
+             C14 26.5 12.6 18.4 9.6 16.4
+             C6.6 14.4 1.5 14 1.5 14
+             C1.5 14 6.6 13.6 9.6 11.6
+             C12.6 9.6 14 1.5 14 1.5Z"
+          fill="url(#gemGradient)"/>
+  </svg>
+</div>
+
+<div id="trail-1"></div>
+<div id="trail-2"></div>
+
+<style lang="scss">
+  #cursor-gem {
+    position: fixed;
+    transform: translate(-50%, -50%);
+
+    width: 30px;
+    height: 30px;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 10px rgba(66, 133, 244, 0.8));
+      animation: gemRotate 8s linear infinite;
+    }
+  }
+
+  @keyframes gemRotate {
+    0%   { transform: rotate(0deg)   scale(1);    }
+    25%  { transform: rotate(90deg)  scale(1.12); }
+    50%  { transform: rotate(180deg) scale(1);    }
+    75%  { transform: rotate(270deg) scale(1.12); }
+    100% { transform: rotate(360deg) scale(1);    }
+  }
+
+  #trail-1,
+  #trail-2 {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    background: #4285f4;
+  }
+
+  #trail-1 {
+    width: 10px;
+    height: 10px;
+    opacity: 0.35;
+  }
+
+  #trail-2 {
+    width: 6px;
+    height: 6px;
+    opacity: 0.2;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const gem  = document.getElementById('cursor-gem');
+  const tr1  = document.getElementById('trail-1');
+  const tr2  = document.getElementById('trail-2');
+
+  let mx = 0, my = 0;
+
+  let r1x = window.innerWidth  / 2;
+  let r1y = window.innerHeight / 2;
+  let r2x = r1x, r2y = r1y;
+
+  window.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+
+    gsap.to(gem, { x: mx, y: my, duration: 0.07 });
+  });
+
+  function animateTrails() {
+    r1x += (mx  - r1x) * 0.17;
+    r1y += (my  - r1y) * 0.17;
+ 
+    r2x += (r1x - r2x) * 0.12;
+    r2y += (r1y - r2y) * 0.12;
+
+    gsap.set(tr1, { x: r1x, y: r1y });
+    gsap.set(tr2, { x: r2x, y: r2y });
+
+    requestAnimationFrame(animateTrails);
+  }
+
+  animateTrails();
+</script>
