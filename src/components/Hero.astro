@@ -17,26 +17,16 @@
         <span class="word gradient">Day</span>
       </span>
       <span class="line" id="line2">
-        <span class="word dark">Build</span>
-        <span class="word dark">with</span>
-        <span class="word dark">AI</span>
-        <span class="gem-icon">
-          <svg viewBox="0 0 28 28">
-            <defs>
-              <linearGradient id="gG" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%"   stop-color="#74b0f8"/>
-                <stop offset="50%"  stop-color="#4285f4"/>
-                <stop offset="100%" stop-color="#1557b0"/>
-              </linearGradient>
-            </defs>
-            <path d="M14 1.5C14 1.5 15.4 9.6 18.4 11.6C21.4 13.6 26.5 14 26.5 14C26.5 14 21.4 14.4 18.4 16.4C15.4 18.4 14 26.5 14 26.5C14 26.5 12.6 18.4 9.6 16.4C6.6 14.4 1.5 14 1.5 14C1.5 14 6.6 13.6 9.6 11.6C12.6 9.6 14 1.5 14 1.5Z"
-                  fill="url(#gG)"/>
-          </svg>
+        <span class="word logo-word">
+          <img src="/images/logo-bwa26.png" alt="Build with AI" class="logo-img" />
         </span>
-      </span>
     </h1>
 
-    <p class="intro-date" id="introDate">Lima, 11 de abril 2026</p>
+    <div class="intro-meta" id="introMeta">
+      <p class="intro-date">📅 11 de abril 2026</p>
+      <p class="intro-place">📍 UPC Campus San Isidro</p>
+      <p class="intro-address">Av. Gral. Felipe Salaverry 2255, San Isidro</p>
+    </div>
 
   </div>
 
@@ -79,6 +69,14 @@
     z-index: 0;
   }
 
+  .intro-meta {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0; 
+}
   .intro-inner {
     position: relative;
     z-index: 2;
@@ -124,14 +122,18 @@
   .line {
     display: flex;
     align-items: center;
-    gap: 0.25em;
+    gap: 1rem;
     overflow: hidden;
     padding-bottom: 0.06em;
+
+    @media (max-width: 900px) {
+      gap: 0.5rem
+    }
   }
 
   .word {
     display: inline-block;
-    font-size: clamp(52px, 9vw, 120px);
+    font-size: clamp(43px, 9vw, 120px);
     transform: translateY(110%);
 
     &.gradient {
@@ -150,6 +152,19 @@
       color: #0d1117;
     }
   }
+
+  .logo-word {
+   font-size: 0;
+  line-height: 0;
+  max-width: 100%; 
+}
+
+.logo-img {
+  height: clamp(55px, 9vw, 280px);
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 
   .gem-icon {
     display: inline-flex;
@@ -173,13 +188,15 @@
   }
 
   .intro-date {
-    margin-top: 32px;
-    font-family: var(--mono);
-    font-size: clamp(13px, 1.5vw, 16px);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(13, 17, 23, 0.35);
-    opacity: 0;
+    padding: 10px 0;
+  }
+  
+  .intro-date, .intro-place, .intro-address {
+    padding: 10px;
+    font-family: var(--secondary);
+    font-size: clamp(15px, 1.5vw, 16px);
+    letter-spacing: 3px;
+    color: rgba(13, 17, 23, 0.638);
   }
 
   .scroll-hint {
@@ -349,6 +366,13 @@
       duration: 0.5,
       ease: 'power2.out',
     }, '-=0.1')
+
+  .to('#introMeta', {
+    opacity: 1,
+    y: 0,
+    duration: 0.5,
+    ease: 'power2.out',
+  }, '-=0.2')  
 
     .to('#scrollHint', {
       opacity: 1,

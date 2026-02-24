@@ -1,0 +1,32 @@
+.bolder {
+  font-weight: 700;
+}
+
+.blue-gradient {
+  font-style: normal;
+  background: linear-gradient(
+    89.58deg,
+    #3186ff 0%,
+    #346bf0 25%,
+    #4ea0ff 50%,
+    #346bf0 75%,
+    #3186ff 100%
+  );
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  animation: gradientFlow 3s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
