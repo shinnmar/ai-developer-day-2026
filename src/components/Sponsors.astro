@@ -1,0 +1,217 @@
+---
+---
+<section id="sponsors">
+  <div class="sponsors-inner">
+
+    <span class="sp-eyebrow">Sponsors</span>
+
+    <div class="sp-tier" id="spTier1">
+      <span class="sp-tier-label">Gracias a:</span>
+      <div class="sp-logos">
+        <div class="sp-card sp-card--featured">
+          <img
+            src="/images/lockup-new.svg"
+            alt="Google for Developers"
+            class="sp-logo"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-divider"></div>
+
+    <div class="sp-tier" id="spTier2">
+      <span class="sp-tier-label">Con el apoyo de:</span>
+      <div class="sp-logos">
+        <div class="sp-card">
+          <img
+            src="/images/logo_upc_red.png"
+            alt="UPC"
+            class="sp-logo"
+          />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style lang="scss">
+  #sponsors {
+    background: var(--dark);
+    padding: 100px 80px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(
+        ellipse,
+        rgba(66, 133, 244, 0.06) 0%,
+        transparent 70%
+      );
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 900px) {
+      padding: 80px 28px;
+    }
+  }
+
+  .sponsors-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .sp-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 56px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+
+    &::before, &::after {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  .sp-tier {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 48px;
+    opacity: 0;
+  }
+
+  .sp-tier-label {
+    font-family: var(--sans);
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.25);
+  }
+
+  .sp-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .sp-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: border-color 0.3s, background 0.3s, transform 0.3s;
+
+    &:hover {
+      border-color: rgba(66, 133, 244, 0.3);
+      background: rgba(66, 133, 244, 0.05);
+      transform: translateY(-3px);
+    }
+
+    &--featured {
+      padding: 36px 64px;
+      border-color: rgba(66, 133, 244, 0.15);
+
+      .sp-logo {
+        height: clamp(36px, 5vw, 56px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      padding: 20px 28px;
+      &--featured { padding: 24px 36px; }
+    }
+  }
+
+  .sp-logo {
+    height: clamp(28px, 4vw, 44px);
+    width: auto;
+    object-fit: contain;
+    transition: opacity 0.3s;
+
+    &:hover { opacity: 0.85; }
+  }
+
+  .sp-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin-bottom: 48px;
+  }
+
+  .sp-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+  }
+
+  .sp-cta-text {
+    font-family: var(--sans);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.timeline({
+    scrollTrigger: { trigger: '#sponsors', start: 'top 75%' }
+  })
+
+    .to('.sp-eyebrow', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+
+    .to('.sp-tier', {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.2,
+      ease: 'power2.out',
+    }, '-=0.2')
+
+    .to('#spCta', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    }, '-=0.1');
+</script>
