@@ -11,20 +11,30 @@
     <p class="about-desc" id="aboutDesc">
       <span class="bolder">AI Developer Day: Build with AI 2026</span> es el espacio
       donde la inteligencia artificial deja de ser tendencia y se convierte en producto.
-      Reunimos a developers, diseñadores, estudiantes y profesionales tech que están
-      construyendo soluciones reales con IA.
+      <span class="bolder"
+        >Reunimos a developers, diseñadores, estudiantes y profesionales tech
+        que están construyendo soluciones reales con IA.</span
+      >
     </p>
     <p class="about-desc" id="aboutDesc">
-      Si estás experimentando, desarrollando o liderando proyectos con IA, este es
-      tu lugar para aprender, compartir y conectar con la comunidad que está redefiniendo
-      el desarrollo con inteligencia artificial.
+      Si estás experimentando, desarrollando o liderando proyectos con IA, este
+      es tu lugar para aprender, compartir y conectar con la comunidad que está
+      redefiniendo el desarrollo con inteligencia artificial.
     </p>
 
     <p class="about-desc" id="aboutDesc">
-      Un evento pensado para inspirarte, darte herramientas prácticas y conectarte con la comunidad que está construyendo el presente y el futuro con IA.
-Organizado por Google Developer Group Callao.</p>
-
-    <a href="#register" class="btn-primary" id="aboutCta">
+      <span class="bolder"
+        >Un evento pensado para inspirarte, darte herramientas prácticas y
+        conectarte con la comunidad que está construyendo el presente y el
+        futuro con IA.</span
+      >
+      <br> Organizado por <a
+        href="https://gdg.community.dev/gdg-callao/"
+        target="_blank">Google Developer Group Callao.</a
+      >
+    </p>
+    <br />
+    <a href="https://gdg.community.dev/e/m9699h/" target="_blank" class="btn-primary" id="aboutCta">
       <span>Reserva tu lugar</span>
     </a>
   </div>
@@ -91,10 +101,17 @@ Organizado por Google Developer Group Callao.</p>
 
   .about-desc {
     font-size: clamp(15px, 1.8vw, 18px);
-    line-height: 1.8;
+    line-height: 1.2;
     color: rgba(13, 17, 23, 0.6);
     padding: 0 0 20px;
     opacity: 0;
+
+    a {
+      color: var(--blue-deep);
+      &:active, :focus {
+        color: var(--blue-deep);
+      }
+    }
   }
 
   .about-cta {
