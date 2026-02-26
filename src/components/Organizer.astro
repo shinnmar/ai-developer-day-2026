@@ -1,0 +1,158 @@
+---
+
+---
+
+<section id="organizer">
+  <div class="organizer-inner">
+    <span class="org-eyebrow">Organiza</span>
+
+    <div class="org-logo-wrap" id="orgLogo">
+      <img
+        src="/images/gdg-logo.png"
+        alt="Google Developer Group Callao"
+        class="org-logo"
+      />
+    </div>
+
+    <h2 class="org-title" id="orgTitle">
+      Google Developer Groups<br />
+      <span class="blue-gradient">Callao</span>
+    </h2>
+
+    <p class="org-desc" id="orgDesc">
+      Somos una comunidad de developers apasionados por la tecnología en Perú.
+      <br> Parte de la red global de Google Developer Groups, organizamos eventos,
+      talleres y charlas para conectar y hacer crecer el ecosistema tech local.
+    </p>
+
+    <a
+      href="https://gdg.community.dev/gdg-callao/"
+      target="_blank"
+      rel="noopener"
+      class="btn-primary"
+      id="orgCta"
+    >
+      <span>Únete a la comunidad ♡</span>
+    </a>
+  </div>
+</section>
+
+<style lang="scss">
+  #organizer {
+    background: var(--blue-ultra);
+    padding: 100px 80px;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 900px) {
+      padding: 80px 28px;
+    }
+  }
+
+  .organizer-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .org-eyebrow {
+    font-family: var(--mono);
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    text-transform: lowercase;
+    font-weight: 800;
+    color: var(--blue-mid);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+  }
+
+  .org-logo-wrap {
+    position: absolute;
+    margin-bottom: 28px;
+    opacity: 0;
+    left: -20%;
+    bottom: 46%;
+
+    @media (max-width: 900px) {
+      left: -5%;
+    }
+    @media (max-width: 765px) {
+      bottom: 60%;
+    }
+    @media (max-width: 550px) {
+      bottom: 85%;
+    }
+  }
+
+  .org-logo {
+    height: clamp(60px, 8vw, 100px);
+    width: auto;
+    rotate: -11deg;
+  }
+
+  .org-title {
+    font-family: var(--display);
+    font-weight: 500;
+    letter-spacing: 5px;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: #0d1117;
+    margin-bottom: 20px;
+    opacity: 0;
+  }
+
+  .org-desc {
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.75;
+    color: rgba(13, 17, 23, 0.6);
+    margin-bottom: 36px;
+    opacity: 0;
+  }
+
+  #orgCta {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap
+    .timeline({
+      scrollTrigger: { trigger: "#organizer", start: "top 75%" },
+    })
+    .to(".org-eyebrow", { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
+    .to(
+      "#orgLogo",
+      { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.4)" },
+      "-=0.2",
+    )
+    .to(
+      "#orgTitle",
+      { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+      "-=0.3",
+    )
+    .to(
+      "#orgDesc",
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+      "-=0.2",
+    )
+    .to(
+      "#orgCta",
+      { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+      "-=0.2",
+    );
+</script>
