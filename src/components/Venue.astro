@@ -1,0 +1,205 @@
+---
+---
+<section id="venue">
+  <div class="venue-inner">
+    <div class="venue-left">
+      <span class="venue-eyebrow">Venue</span>
+
+      <h2 class="venue-title" id="venueTitle">
+        UPC Campus<br/>
+        <span class="blue-gradient">San Isidro</span>
+      </h2>
+
+      <p class="venue-desc" id="venueDesc">
+        El evento se realizará en las instalaciones de la
+        Universidad Peruana de Ciencias Aplicadas.
+      </p>
+    </div>
+
+    <div class="venue-right" id="venueRight">
+      <div class="venue-map-embed">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.360627844956!2d-77.0525170253651!3d-12.087445942658665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8560da88193%3A0xc96db500423dd90c!2sUniversidad%20Peruana%20de%20Ciencias%20Aplicadas!5e0!3m2!1ses!2spe!4v1772087431599!5m2!1ses!2spe"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="UPC Campus San Isidro"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+#venue {
+  background: var(--white);
+  padding: 100px 80px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      ellipse,
+      rgba(66, 133, 244, 0.04) 0%,
+      transparent 70%
+    );
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    padding: 80px 28px;
+  }
+}
+
+.venue-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.venue-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 100px;
+}
+
+.venue-eyebrow {
+  font-family: var(--secundary);
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--blue-mid);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+
+  &::before {
+    content: '';
+    width: 16px;
+    height: 1.5px;
+    background: var(--blue-mid);
+  }
+}
+
+.venue-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: #0d1117;
+  margin-bottom: 24px;
+  opacity: 0;
+}
+
+.venue-desc {
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.75;
+  color: rgba(13, 17, 23, 0.55);
+  margin: 0 0 10px;
+  opacity: 0;
+}
+
+.venue-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--blue-mid);
+  border: 1.5px solid rgba(66, 133, 244, 0.25);
+  padding: 12px 24px;
+  border-radius: 40px;
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+  opacity: 0;
+
+  &:hover {
+    border-color: var(--blue-mid);
+    background: var(--blue-ultra);
+    transform: translateY(-2px);
+  }
+}
+
+.venue-map-icon {
+  display: flex;
+  align-items: center;
+  svg { width: 18px; height: 18px; }
+}
+
+.venue-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.venue-map-embed {
+  width: 100%;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(66, 133, 244, 0.1);
+  margin-bottom: 4px;
+  opacity: 0;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.timeline({
+    scrollTrigger: { trigger: '#venue', start: 'top 75%' }
+  })
+    .to('.venue-eyebrow', {
+      opacity: 1, y: 0, duration: 0.5, ease: 'power2.out'
+    })
+    .to('#venueTitle', {
+      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out'
+    }, '-=0.2')
+    .to('.venue-desc', {
+      opacity: 1, y: 0, duration: 0.6, ease: 'power2.out'
+    }, '-=0.3')
+    .to('#venueMapLink', {
+      opacity: 1, y: 0, duration: 0.5, ease: 'power2.out'
+    }, '-=0.2')
+    .to('.venue-map-embed', {
+      opacity: 1, duration: 0.7, ease: 'power2.out'
+    }, '-=0.3')
+    .to('.venue-card', {
+      opacity: 1, x: 0, duration: 0.5,
+      stagger: 0.1, ease: 'power2.out'
+    }, '-=0.4');
+</script>
